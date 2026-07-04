@@ -1,0 +1,33 @@
+.student-table {
+  width: 90%;
+  margin: 30px auto;
+}
+
+.student-table h2 {
+  margin-bottom: 15px;
+}
+
+.student-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.student-table th,
+.student-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.student-table th {
+  background-color: #007bff;
+  color: white;
+}
+
+.student-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.student-table tr:hover {
+  background-color: #ddd;
+}

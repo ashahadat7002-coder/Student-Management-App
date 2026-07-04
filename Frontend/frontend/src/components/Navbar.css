@@ -1,0 +1,12 @@
+.navbar{
+    background-color:#2563eb;
+    color:white;
+    padding: 18px 30px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.logo{
+    font-size: 28px;
+    font-weight: bold;
+}
