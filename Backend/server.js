@@ -5,33 +5,28 @@ const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 const studentRoutes = require("./routes/studentRoutes");
 
-// Load environment variables from .env
 dotenv.config();
-
-// Connect to MongoDB
 connectDB();
 
 const app = express();
 
-// Allow requests from the React frontend
 app.use(
   cors({
     origin: [
+      "http://localhost:5173",
+      "http://localhost:5174",
       "http://localhost:5175",
-      
+      "https://student-management-frontss.onrender.com",
     ],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type"],
   })
 );
 
-// Parse JSON request bodies
 app.use(express.json());
 
-// Student routes
 app.use("/api/students", studentRoutes);
 
-// Test route
 app.get("/", (req, res) => {
   res.status(200).json({
     success: true,
@@ -39,7 +34,6 @@ app.get("/", (req, res) => {
   });
 });
 
-// Start the server
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
