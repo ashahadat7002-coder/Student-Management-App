@@ -18,7 +18,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5175",
-      "https://student-management-react-n2oi.onrender.com",
+      
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
