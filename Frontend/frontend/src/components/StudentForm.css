@@ -1,44 +1,128 @@
-.student-form{
-    background-color: white;
-    padding: 25px;
-    border-radius: 10px;
-    margin-top: 25px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+.student-form {
+  margin: 30px 0;
+  padding: 28px;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
 }
-.student-form h2{
-    margin-bottom: 20px;
-    color: #1f2937;
-}
-.student-form form{
-    display: flex;
-    flex-direction: column;
-    gap:15px;
-}
-.student-form input{
-    padding: 12px;
-    font-size: 16px;
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
-}
-.student-form button{
-    padding: 12px;
-    background-color: #2563eb;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-}
-.student-form button:hover{
-    background-color: #1d4ed8;
-}
-.student-form select{
-    padding: 12px;
-    font-size: 16px;
-    border: 1px solid #d1d5db;
 
+.student-form h2 {
+  margin-bottom: 22px;
+  color: #1f2937;
+  font-size: 1.6rem;
 }
-.student-form select:focus{
-    outline: none;
-    border-color: #2563eb;
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.form-group label {
+  color: #374151;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 1rem;
+  color: #1f2937;
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.form-actions button {
+  padding: 12px 20px;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: #2563eb;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.form-actions button:hover:not(:disabled) {
+  background-color: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+.form-actions button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.form-actions .cancel-button {
+  background-color: #64748b;
+}
+
+.form-actions .cancel-button:hover {
+  background-color: #475569;
+}
+
+.form-message {
+  margin-bottom: 18px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.success-message {
+  color: #166534;
+  background-color: #dcfce7;
+  border: 1px solid #86efac;
+}
+
+.error-message {
+  color: #b91c1c;
+  background-color: #fee2e2;
+  border: 1px solid #fecaca;
+}
+
+@media (max-width: 768px) {
+  .student-form {
+    padding: 20px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .form-actions button {
+    width: 100%;
+  }
 }

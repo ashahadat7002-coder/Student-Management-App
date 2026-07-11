@@ -1,92 +1,112 @@
 const express = require("express");
 const router = express.Router();
-const Student = require("../models/student");
 
-router.post("/",async(req,res) => {
-    try{
-        const student = await
-Student.create(req.body);
+const Student = require("../models/Student");
+
+// ======================
+// Create Student
+// ======================
+router.post("/", async (req, res) => {
+    try {
+        const student = await Student.create(req.body);
+
         res.status(201).json({
-            success:true,
-            message:"Student added successfully",
-            data:student,
+            success: true,
+            message: "Student added successfully",
+            data: student,
         });
-    }catch(error){
+    } catch (error) {
         console.error(error);
+
         res.status(500).json({
-            success:false,
-            message:error.message,
+            success: false,
+            message: error.message,
         });
     }
 });
-router.get("/",async(req,res) => {
-    try{
+
+// ======================
+// Get All Students
+// ======================
+router.get("/", async (req, res) => {
+    try {
         const students = await Student.find();
+
         res.status(200).json({
-            success:true,
-            count:students.length,
-            data:students,
+            success: true,
+            count: students.length,
+            data: students,
         });
+    } catch (error) {
+        console.error(error);
 
-    }catch(error){
         res.status(500).json({
-            success:false,
-            message:error.message,
+            success: false,
+            message: error.message,
         });
-
     }
 });
-router.put("/:id",async(req,res) =>{
-    try{
-        const student = await
-        Student.findByIdAndUpdate(
+
+// ======================
+// Update Student
+// ======================
+router.put("/:id", async (req, res) => {
+    try {
+        const student = await Student.findByIdAndUpdate(
             req.params.id,
             req.body,
             {
-                new:true,
-                runValidators:true,
+                new: true,
+                runValidators: true,
             }
         );
-        if(!student){
+
+        if (!student) {
             return res.status(404).json({
-                success:false,
-                message:"Student updates successfully",
-                
+                success: false,
+                message: "Student not found",
             });
         }
+
         res.status(200).json({
-            success:true,
-            message:"Student updated successfully",
-            data:student
+            success: true,
+            message: "Student updated successfully",
+            data: student,
         });
+    } catch (error) {
+        console.error(error);
 
-    }catch(error){
         res.status(500).json({
-            success:false,
-            message:error.message,
+            success: false,
+            message: error.message,
         });
-
     }
-
 });
-router.delete("/:id",async(req,res) => {
-    try{
+
+// ======================
+// Delete Student
+// ======================
+router.delete("/:id", async (req, res) => {
+    try {
         const student = await Student.findByIdAndDelete(req.params.id);
-        if  (!student){
+
+        if (!student) {
             return res.status(404).json({
-                success:false,
-                message:"Student not found"
+                success: false,
+                message: "Student not found",
             });
         }
-        res.status(200).json({
-            success:true,
-            message:"All students deleted successfully"
-        });
-    }catch(error){
-        res.status(500).json({
-            success:false,
 
-            messsage:error.message,
+        res.status(200).json({
+            success: true,
+            message: "Student deleted successfully",
+        });
+    } catch (error) {
+        console.error(error);
+
+        res.status(500).json({
+            success: false,
+            message: error.message,
         });
     }
 });

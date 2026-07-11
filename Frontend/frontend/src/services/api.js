@@ -1,6 +1,10 @@
 import axios from "axios";
 
 const API = axios.create({
-    baseURL: "https://student-management-app-1-u7yr.onrender.com/api/students",
+  baseURL: import.meta.env.VITE_API_URL,
+  headers: {
+    "Content-Type": "application/json",
+  },
 });
+
 export default API;

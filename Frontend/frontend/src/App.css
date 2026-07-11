@@ -1,12 +1,44 @@
-
-.app{
-  width: 90%;
-  max-width: 1100px;
-  margin: 40px auto;
+/* Main Container */
+.app {
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
 }
-.title{
-  text-align: center;
-  color: #1f2937;
-  font-size: 38px;
-  margin-bottom: 30px;
+
+/* Page Title */
+.title {
+    text-align: center;
+    color: #1f2937;
+    font-size: 2.3rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+/* Status Messages */
+.status-message {
+    text-align: center;
+    margin: 20px 0;
+    padding: 12px;
+    border-radius: 8px;
+    background-color: #eff6ff;
+    color: #1d4ed8;
+    font-weight: 600;
+}
+
+.error-message {
+    background-color: #fee2e2;
+    color: #b91c1c;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .app {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .title {
+        font-size: 1.8rem;
+    }
 }

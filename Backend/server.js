@@ -1,28 +1,47 @@
 const express = require("express");
 const cors = require("cors");
-const dotenv =  require("dotenv")
+const dotenv = require("dotenv");
+
 const connectDB = require("./config/db");
 const studentRoutes = require("./routes/studentRoutes");
 
-
+// Load environment variables from .env
 dotenv.config();
-connectDB();
-const app = express();
-const cors = require("cors");
 
-app.use(cors({
-  origin: "https://student-management-app-2-isfd.onrender.com",
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
-}));
+// Connect to MongoDB
+connectDB();
+
+const app = express();
+
+// Allow requests from the React frontend
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5175",
+      "https://your-frontend-url.onrender.com",
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
+
+// Parse JSON request bodies
 app.use(express.json());
 
-app.use("/api/students",studentRoutes);
+// Student routes
+app.use("/api/students", studentRoutes);
 
-app.get("/",(req,res) =>{
-    res.send("Welcome to Student Management API");
+// Test route
+app.get("/", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Student Management API is running",
+  });
 });
+
+// Start the server
 const PORT = process.env.PORT || 5000;
-app.listen(PORT,()=>{
-    console.log(`Server is running on port ${PORT}`);
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });

@@ -1,12 +1,44 @@
-.navbar{
-    background-color:#2563eb;
-    color:white;
-    padding: 18px 30px;
-    border-radius: 10px;
-    margin-bottom: 30px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+.navbar {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: #ffffff;
+    padding: 22px 30px;
+    border-radius: 14px;
+    margin-bottom: 35px;
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.2);
 }
-.logo{
-    font-size: 28px;
-    font-weight: bold;
+
+.navbar-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.tagline {
+    margin-top: 8px;
+    font-size: 1rem;
+    color: #dbeafe;
+    font-weight: 400;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 18px;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .tagline {
+        text-align: center;
+        font-size: 0.9rem;
+    }
 }
